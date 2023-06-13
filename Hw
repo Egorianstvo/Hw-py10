@@ -1,0 +1,28 @@
+# с помощью Панды Импортируем pandas
+import pandas as pd
+
+# Преобразуем столбец whoAmI в one hot encoding
+data_encoded = pd.get_dummies(data['whoAmI'])
+
+# Выводим результат
+print(data_encoded)
+
+
+
+
+
+# второй вариант Импортируем OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+# Создаем экземпляр класса
+enc = OneHotEncoder()
+
+# Преобразуем столбец whoAmI в двумерный массив
+X = data['whoAmI'].values.reshape(-1, 1)
+
+# Обучаем энкодер на данных и применяем его
+enc.fit(X)
+X_encoded = enc.transform(X)
+
+# Выводим результат
+print(X_encoded.toarray())
